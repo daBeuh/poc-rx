@@ -1,0 +1,16 @@
+# Eclipse Core
+.project
+.settings/
+.loadpath
+.classpath
+bin/
+tmp/
+
+# Project Config
+local.properties
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# Maven
+target/
