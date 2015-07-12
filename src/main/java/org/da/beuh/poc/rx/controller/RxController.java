@@ -1,7 +1,9 @@
 package org.da.beuh.poc.rx.controller;
 
+import org.da.beuh.poc.rx.model.Company;
 import org.da.beuh.poc.rx.model.Person;
-import org.da.beuh.poc.rx.service.RxService;
+import org.da.beuh.poc.rx.service.CompanyService;
+import org.da.beuh.poc.rx.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +22,10 @@ public class RxController {
 	private DeferredResultFactory factory;
 
 	@Autowired
-	private RxService rxService;
+	private PersonService personService;
+
+	@Autowired
+	private CompanyService companyService;
 
 	/**
 	 * @param person
@@ -28,6 +33,15 @@ public class RxController {
 	 */
 	@RequestMapping(value = "/persons", method = RequestMethod.POST)
 	public DeferredResult<Person> createPerson(@RequestBody Person person) {
-		return factory.create(rxService.createPerson(person.getFirstName(), person.getLastName()));
+		return factory.create(personService.createPerson(person.getFirstName(), person.getLastName()));
+	}
+
+	/**
+	 * @param company
+	 * @return
+	 */
+	@RequestMapping(value = "/companies", method = RequestMethod.POST)
+	public DeferredResult<Company> createCompany(@RequestBody Company company) {
+		return factory.create(companyService.createCompany(company.getName(), company.getCountry()));
 	}
 }

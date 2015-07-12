@@ -1,6 +1,3 @@
-/**
- *
- */
 package org.da.beuh.poc.rx.event;
 
 /**
@@ -34,6 +31,16 @@ public class Event<T> {
 	 */
 	public String getType() {
 		return type;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Event [subject=" + subject + ", type=" + type + "]";
 	}
 
 }

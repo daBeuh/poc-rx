@@ -2,14 +2,12 @@ package org.da.beuh.poc.rx;
 
 import javax.annotation.PostConstruct;
 
-import org.da.beuh.poc.rx.service.RxService;
+import org.da.beuh.poc.rx.event.RxEventAggregator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import rx.schedulers.Schedulers;
 
 /**
  * @author Da Beuh
@@ -27,18 +25,16 @@ public class Application {
 	 *
 	 */
 	@Autowired
-	private RxService rxService;
+	private RxEventAggregator eventAggregator;
 
 	/**
 	 *
 	 */
 	@PostConstruct
 	private void init() {
-		rxService.getEventObservable()
-				.observeOn(Schedulers.computation())
-				.subscribeOn(Schedulers.computation())
+		eventAggregator.getEventObservable()
 				.subscribe(event -> {
-					LOGGER.info("New Person event: {} {}", event.getType(), event.getSubject());
+					LOGGER.info("New event: {}", event);
 				});
 	}
 

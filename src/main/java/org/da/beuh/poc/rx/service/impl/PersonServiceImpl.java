@@ -5,7 +5,7 @@ package org.da.beuh.poc.rx.service.impl;
 
 import org.da.beuh.poc.rx.event.Event;
 import org.da.beuh.poc.rx.model.Person;
-import org.da.beuh.poc.rx.service.RxService;
+import org.da.beuh.poc.rx.service.PersonService;
 import org.springframework.stereotype.Service;
 
 import rx.Observable;
@@ -16,7 +16,7 @@ import rx.subjects.PublishSubject;
  * @date 7 juil. 2015
  */
 @Service
-public class RxServiceImpl implements RxService {
+public class PersonServiceImpl implements PersonService {
 
 	private PublishSubject<Event<Person>> personSubject = PublishSubject.create();
 

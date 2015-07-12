@@ -12,11 +12,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author Da Beuh
  * @date 7 juil. 2015
  */
-public class Person implements EntityModel {
+public class Company implements EntityModel {
 
-	private String firstName;
+	private String name;
 
-	private String lastName;
+	private String country;
 
 	private Calendar creationDate;
 
@@ -26,24 +26,24 @@ public class Person implements EntityModel {
 	 * @param creationDate
 	 */
 	@JsonCreator
-	public Person(@JsonProperty("firstName") final String firstName, @JsonProperty("lastName") final String lastName) {
-		this.firstName = firstName;
-		this.lastName = lastName;
+	public Company(@JsonProperty("name") final String name, @JsonProperty("country") final String country) {
+		this.name = name;
+		this.country = country;
 		this.creationDate = Calendar.getInstance();
 	}
 
 	/**
-	 * @return the firstName
+	 * @return the name
 	 */
-	public String getFirstName() {
-		return firstName;
+	public String getName() {
+		return name;
 	}
 
 	/**
-	 * @return the lastName
+	 * @return the country
 	 */
-	public String getLastName() {
-		return lastName;
+	public String getCountry() {
+		return country;
 	}
 
 	/**
@@ -62,7 +62,7 @@ public class Person implements EntityModel {
 	 */
 	@Override
 	public String toString() {
-		return "Person [firstName=" + firstName + ", lastName=" + lastName + ", creationDate=" + creationDate.getTimeInMillis() + "]";
+		return "Company [name=" + name + ", country=" + country + ", creationDate=" + creationDate.getTimeInMillis() + "]";
 	}
 
 }
